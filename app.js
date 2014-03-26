@@ -13,8 +13,12 @@ var app = express();
 
 
 var mongoose = require("mongoose");
-
-mongoose.connect('mongodb://localhost/catsDb');
+  
+if (process.env.NODE_ENV === "production") {
+  mongoose.connect("mongodb://heroku_app23410640:iaaltidd77ecvio269dqdvgppl@ds045907.mongolab.com:45907/heroku_app23410640");
+} else { 
+  mongoose.connect('mongodb://localhost/catsDb');
+}
 
 db = mongoose.connection;
 
