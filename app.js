@@ -29,7 +29,7 @@ db.once('open', function callback () {
 var kittySchema = mongoose.Schema({
     name: String
 })
-var Kitten = mongoose.model('Kitten', kittySchema)
+var Kitten = mongoose.model('Puppy', kittySchema)
 
 
 var fluffy = new Kitten({ name: 'fluffy' });
