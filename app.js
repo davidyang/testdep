@@ -11,6 +11,30 @@ var path = require('path');
 
 var app = express();
 
+
+var mongoose = require("mongoose");
+
+mongoose.connect('mongodb://localhost/catsDb');
+
+db = mongoose.connection;
+
+db.once('open', function callback () {
+  // yay!
+});
+
+var kittySchema = mongoose.Schema({
+    name: String
+})
+var Kitten = mongoose.model('Kitten', kittySchema)
+
+
+var fluffy = new Kitten({ name: 'fluffy' });
+
+fluffy.save(function (err, fluffy) {
+  if (err) return console.error(err);
+});
+
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
